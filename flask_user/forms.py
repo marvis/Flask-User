@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """ This file defines and validates Flask-User forms. Forms are based on the WTForms module.
 
     :copyright: (c) 2013 by Ling Thio
@@ -76,17 +77,17 @@ class AddEmailForm(FlaskForm):
     submit = SubmitField(_('Add Email'))
 
 class ChangePasswordForm(FlaskForm):
-    old_password = PasswordField(_('Old Password'), validators=[
-        validators.DataRequired(_('Old Password is required')),
+    old_password = PasswordField(u'古いパスワード', validators=[
+        validators.DataRequired(u'古いパスワードは必須項目です'),
         ])
-    new_password = PasswordField(_('New Password'), validators=[
-        validators.DataRequired(_('New Password is required')),
+    new_password = PasswordField(u'新しいパスワード', validators=[
+        validators.DataRequired(u'新しいパスワードは必須項目です'),
         ])
-    retype_password = PasswordField(_('Retype New Password'), validators=[
+    retype_password = PasswordField(u'新しいパスワードを再入力', validators=[
         validators.EqualTo('new_password', message=_('New Password and Retype Password did not match'))
         ])
     next = HiddenField()
-    submit = SubmitField(_('Change password'))
+    submit = SubmitField(u'パスワードを変更する')
 
     def validate(self):
         # Use feature config to remove unused form fields
@@ -167,26 +168,26 @@ class LoginForm(FlaskForm):
     next = HiddenField()         # for login.html
     reg_next = HiddenField()     # for login_or_register.html
 
-    username = StringField(_('Username'), validators=[
+    username = StringField(u'ユーザ名', validators=[
         validators.DataRequired(_('Username is required')),
     ])
-    email = StringField(_('Email'), validators=[
+    email = StringField(u'メールアドレス', validators=[
         validators.DataRequired(_('Email is required')),
         validators.Email(_('Invalid Email'))
     ])
-    password = PasswordField(_('Password'), validators=[
+    password = PasswordField(u'パスワード', validators=[
         validators.DataRequired(_('Password is required')),
     ])
-    remember_me = BooleanField(_('Remember me'))
+    remember_me = BooleanField(u'ログイン状態を保存する')
 
-    submit = SubmitField(_('Sign in'))
+    submit = SubmitField(u'ログイン')
 
     def __init__(self, *args, **kwargs):
         super(LoginForm, self).__init__(*args, **kwargs)
         user_manager =  current_app.user_manager
         if user_manager.enable_username and user_manager.enable_email:
             # Renamed 'Username' label to 'Username or Email'
-            self.username.label.text = _('Username or Email')
+            self.username.label.text = u'ユーザ名/メールアドレス'
 
     def validate(self):
         # Remove fields depending on configuration
@@ -223,13 +224,13 @@ class LoginForm(FlaskForm):
         # Email, Username or Email/Username depending on settings
         if user_manager.enable_username and user_manager.enable_email:
             username_or_email_field = self.username
-            username_or_email_text = (_('Username/Email'))
+            username_or_email_text = u'ユーザ名/メールアドレス'
         elif user_manager.enable_username:
             username_or_email_field = self.username
-            username_or_email_text = (_('Username'))
+            username_or_email_text = u'ユーザ名'
         else:
             username_or_email_field = self.email
-            username_or_email_text = (_('Email'))
+            username_or_email_text = u'メールアドレス'
 
         # Show 'username/email does not exist error message
         if user_manager.show_username_email_does_not_exist:
@@ -254,20 +255,20 @@ class RegisterForm(FlaskForm):
     next = HiddenField()        # for login_or_register.html
     reg_next = HiddenField()    # for register.html
 
-    username = StringField(_('Username'), validators=[
-        validators.DataRequired(_('Username is required')),
+    username = StringField(u'ユーザ名', validators=[
+        validators.DataRequired(u'ユーザ名は必須項目です'),
         unique_username_validator])
-    email = StringField(_('Email'), validators=[
-        validators.DataRequired(_('Email is required')),
-        validators.Email(_('Invalid Email')),
+    email = StringField(u'メールアドレス', validators=[
+        validators.DataRequired(u'メールアドレスは必須項目です'),
+        validators.Email(u'無効なメールアドレスです'),
         unique_email_validator])
-    password = PasswordField(_('Password'), validators=[
-        validators.DataRequired(_('Password is required'))])
-    retype_password = PasswordField(_('Retype Password'), validators=[
+    password = PasswordField(u'パスワード', validators=[
+        validators.DataRequired(u'パスワードは必須項目です')])
+    retype_password = PasswordField(u'パスワード（再入力）', validators=[
         validators.EqualTo('password', message=_('Password and Retype Password did not match'))])
     invite_token = HiddenField(_('Token'))
 
-    submit = SubmitField(_('Register'))
+    submit = SubmitField(u'登録')
 
     def validate(self):
         # remove certain form fields depending on user manager config
@@ -312,7 +313,7 @@ class ResetPasswordForm(FlaskForm):
     retype_password = PasswordField(_('Retype New Password'), validators=[
         validators.EqualTo('new_password', message=_('New Password and Retype Password did not match'))])
     next = HiddenField()
-    submit = SubmitField(_('Change password'))
+    submit = SubmitField('パスワードを変更する')
 
     def validate(self):
         # Use feature config to remove unused form fields
