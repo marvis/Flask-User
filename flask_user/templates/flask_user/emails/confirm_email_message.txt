@@ -1,10 +1,10 @@
 {% extends 'flask_user/emails/base_message.txt' %}
 
 {% block message %}
-You will need to confirm your email to start using {{ app_name }}.
+{{ app_name }}の利用開始には，メールアドレスの確認が必要です．
 
-If you initiated this registration, please visit the link below:
+心当たりがある場合は，以下のリンクをクリックしてください:
     {{ confirm_email_link }}
 
-If you did not initiate this registration, you may safely ignore this email.
+心あたりがない場合は，このメールは無視してください．
 {% endblock %}
