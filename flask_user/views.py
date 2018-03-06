@@ -76,7 +76,7 @@ def confirm_email(token):
     signals.user_confirmed_email.send(current_app._get_current_object(), user=user)
 
     # Prepare one-time system message
-    flash(_('Your email has been confirmed.'), 'success')
+    flash(u'メールアドレスが確認されました。', 'success')
 
     # Auto-login after confirm or redirect to login page
     safe_next = _get_safe_next_param('next', user_manager.after_confirm_endpoint)
@@ -292,7 +292,7 @@ def logout():
     logout_user()
 
     # Prepare one-time system message
-    flash(_('You have signed out successfully.'), 'success')
+    flash(u'ログアウトしました。', 'success')
 
     # Redirect to logout_next endpoint or '/'
     safe_next = _get_safe_next_param('next', user_manager.after_logout_endpoint)
@@ -729,7 +729,7 @@ def _do_login_user(user, safe_next, remember_me=False):
     signals.user_logged_in.send(current_app._get_current_object(), user=user)
 
     # Prepare one-time system message
-    flash(_('You have signed in successfully.'), 'success')
+    flash(u'ログインしました。', 'success')
 
     # Redirect to 'safe_next' URL
     return redirect(safe_next)
