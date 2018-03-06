@@ -56,14 +56,14 @@ def unique_username_validator(form, field):
     """ Username must be unique"""
     user_manager =  current_app.user_manager
     if not user_manager.username_is_available(field.data):
-        raise ValidationError(_('This Username is already in use. Please try another one.'))
+        raise ValidationError(u'このユーザ名は使われています。')
 
 
 def unique_email_validator(form, field):
     """ Username must be unique"""
     user_manager =  current_app.user_manager
     if not user_manager.email_is_available(field.data):
-        raise ValidationError(_('This Email is already in use. Please try another one.'))
+        raise ValidationError(u'このメールアドレスは登録済みです。')
 
 # ***********
 # ** Forms **
