@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """ This file contains view functions for Flask-User forms.
 
     :copyright: (c) 2013 by Ling Thio
@@ -677,9 +679,9 @@ def _send_registered_email(user, user_email, require_email_confirmation=True):
         # Prepare one-time system message
         if user_manager.enable_confirm_email and require_email_confirmation:
             email = user_email.email if user_email else user.email
-            flash(_('A confirmation email has been sent to %(email)s with instructions to complete your registration.', email=email), 'success')
+            flash(u'ご登録いただいたメールアドレスに確認メールを送信しました。ご確認の上、本登録をお願いします。', 'success')
         else:
-            flash(_('You have registered successfully.'), 'success')
+            flash(u'登録が完了しました。', 'success')
 
 
 def _send_confirm_email(user, user_email):
@@ -698,7 +700,7 @@ def _send_confirm_email(user, user_email):
 
         # Prepare one-time system message
         email = user_email.email if user_email else user.email
-        flash(_('A confirmation email has been sent to %(email)s with instructions to complete your registration.', email=email), 'success')
+        flash(u'ご登録いただいたメールアドレスに確認メールを送信しました。ご確認の上、本登録をお願いします。', 'success')
 
 
 def _do_login_user(user, safe_next, remember_me=False):
