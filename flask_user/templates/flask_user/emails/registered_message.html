@@ -2,11 +2,11 @@
 
 {% block message %}
 
-<p>{{ app_name }}へのご登録ありがとうございます！</p>
+<p>{{ app_name }}への仮登録ありがとうございます！</p>
 
 {% if user_manager.enable_confirm_email and not user.confirmed_at -%}
-<p>こちらをクリックして登録を完了させてください。</p>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ confirm_email_link }}">メール確認</a>.</p>
+<p>こちらをクリックしてメール認証を行い、次に画面に戻ってマイアカウントを編集してください。</p>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ confirm_email_link }}">メール確認</a></p>
 
 <p>
   もし、このご登録に覚えのない場合は、このまま何もしなくて結構です。
