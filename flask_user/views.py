@@ -718,7 +718,7 @@ def _do_login_user(user, safe_next, remember_me=False):
             and not current_app.user_manager.enable_login_without_confirm_email \
             and not user.has_confirmed_email():
         url = url_for('user.resend_confirm_email')
-        flash(_('Your email address has not yet been confirmed. Check your email Inbox and Spam folders for the confirmation email or <a href="%(url)s">Re-send confirmation email</a>.', url=url), 'error')
+        flash(u'お客様はまだメールアドレス認証が完了していません。ご登録いただいたメールアドレス宛に事務局から送信したメールをご確認ください。 <br/>再度メールを送信する場合は<a href="%s">こちらをクリック</a>してください。' % url, 'error')
         return redirect(url_for('user.login'))
 
     # Use Flask-Login to sign in user
