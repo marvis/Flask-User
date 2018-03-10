@@ -150,11 +150,11 @@ class ChangeUsernameForm(FlaskForm):
         return True
 
 class ForgotPasswordForm(FlaskForm):
-    email = StringField(_('Your email address'), validators=[
-        validators.DataRequired(_('Email address is required')),
-        validators.Email(_('Invalid Email address')),
+    email = StringField(u'メールアドレス', validators=[
+        validators.DataRequired(u'メールアドレスは必須項目です'),
+        validators.Email(u'無効なメールアドレスです'),
         ])
-    submit = SubmitField(_('Send reset password email'))
+    submit = SubmitField(u'パスワードのリセット')
 
     def validate_email(form, field):
         user_manager =  current_app.user_manager

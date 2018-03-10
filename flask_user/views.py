@@ -220,7 +220,7 @@ def forgot_password():
             user_manager.send_reset_password_email(email)
 
         # Prepare one-time system message
-        flash(_("A reset password email has been sent to '%(email)s'. Open that email and follow the instructions to reset your password.", email=email), 'success')
+        flash(u"パスワードをリセットするメールが '%s' に送信されました。メールの指示に従ってパスワードをリセットして下さい。" % email, 'success')
 
         # Redirect to the login page
         return redirect(_endpoint_url(user_manager.after_forgot_password_endpoint))
