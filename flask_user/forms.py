@@ -84,7 +84,7 @@ class ChangePasswordForm(FlaskForm):
         validators.DataRequired(u'新しいパスワードは必須項目です'),
         ])
     retype_password = PasswordField(u'新しいパスワードを再入力', validators=[
-        validators.EqualTo('new_password', message=_('New Password and Retype Password did not match'))
+        validators.EqualTo('new_password', message=_('新しいパスワードと確認用のパスワードが異なります'))
         ])
     next = HiddenField()
     submit = SubmitField(u'パスワードを変更する')
