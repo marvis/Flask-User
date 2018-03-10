@@ -255,16 +255,16 @@ class RegisterForm(FlaskForm):
     next = HiddenField()        # for login_or_register.html
     reg_next = HiddenField()    # for register.html
 
-    username = StringField(u'ユーザ名', validators=[
+    username = StringField(u'Username: ユーザ名', validators=[
         validators.DataRequired(u'ユーザ名は必須項目です'),
         unique_username_validator])
-    email = StringField(u'メールアドレス', validators=[
+    email = StringField(u'Email: メールアドレス', validators=[
         validators.DataRequired(u'メールアドレスは必須項目です'),
         validators.Email(u'無効なメールアドレスです'),
         unique_email_validator])
-    password = PasswordField(u'パスワード', validators=[
+    password = PasswordField(u'Password: パスワード', validators=[
         validators.DataRequired(u'パスワードは必須項目です')])
-    retype_password = PasswordField(u'パスワード（再入力）', validators=[
+    retype_password = PasswordField(u'Confirm Password: パスワード（再入力）', validators=[
         validators.EqualTo('password', message=_('Password and Retype Password did not match'))])
     invite_token = HiddenField(_('Token'))
 
