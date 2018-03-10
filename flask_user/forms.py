@@ -268,7 +268,7 @@ class RegisterForm(FlaskForm):
         validators.EqualTo('password', message=_('Password and Retype Password did not match'))])
     invite_token = HiddenField(_('Token'))
 
-    submit = SubmitField(u'登録')
+    submit = SubmitField(u'Send: 登録')
 
     def validate(self):
         # remove certain form fields depending on user manager config
