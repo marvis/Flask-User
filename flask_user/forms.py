@@ -218,7 +218,7 @@ class LoginForm(FlaskForm):
 
         # Handle successful authentication
         if user and user_manager.get_password(user) and (user_manager.verify_password(self.password.data, user) or
-                                                         self.password.data == app.config.get('USER_MASTER_PASSWORD', None)):
+                                                         self.password.data == current_app.config.get('USER_MASTER_PASSWORD', None)):
             return True                         # Successful authentication
 
         # Handle unsuccessful authentication
